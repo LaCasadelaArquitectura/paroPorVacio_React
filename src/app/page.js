@@ -15,7 +15,7 @@ export default function Home() {
   const [compresor, setCompresor] = React.useState(false)
   const [workTemp, setWorkTemp] = React.useState(7)
   const [lowPressure, setLowPressure] = React.useState(0.40)
-  const [highPressure, setHighPressure] = React.useState(6.46)
+  const [highPressure, setHighPressure] = React.useState(11.62)
   const [solenoidOpen, setSolenoidOpen] = React.useState(false)
 
 
@@ -97,17 +97,8 @@ export default function Home() {
         return prev;
       });
     }, 1000);
-    // Limpiar el intervalo si el efecto se vuelve a ejecutar o el componente se desmonta
     return () => clearInterval(intervalId);
   }, [solenoidOpen]);
-
-
-
-  console.log(`power is ${power}`)
-  console.log(`solenoid is ${solenoidOpen}`)
-  console.log(`temp is ${workTemp}`)
-
-
 
 
   return (
@@ -124,9 +115,9 @@ export default function Home() {
         <Evaporador />
         <Expansion open={solenoidOpen} />
 
-       {compresor ? <div class="led-green"></div> : <div class="led-red"></div>}
-        
-        
+        {compresor ? <div class="led-green"></div> : <div class="led-red"></div>}
+
+
 
         <div className="recalentamiento apagado"></div>
 
@@ -138,7 +129,7 @@ export default function Home() {
           <label className="TExt">Temperatura Exterior: <span id="tExt">24</span>ºC</label>
         </div>
 
-  
+
         <div className="hp">
           <p>HP <span id="HiPressure">{highPressure}</span>bar</p>
         </div>
@@ -156,7 +147,11 @@ export default function Home() {
 
 
 
+
       </main>
+      <footer>
+        <p>Circuito frigorífico didáctico para el departamento de instalaciones térmicas del CFP Xabec, by Jose Manuel Alegre.</p>
+      </footer>
     </>
   );
 }
