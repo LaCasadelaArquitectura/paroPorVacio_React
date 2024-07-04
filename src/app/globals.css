@@ -1,0 +1,511 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+html{
+    font-size: 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    --color-compresor: linear-gradient(90deg, #add8e6ce, #ff4400ce, #ffa600cb);
+    --color-descarga: rgba(255, 0, 0, 0.694);
+    --color-descarga2: rgba(255, 77, 0, 0.696);
+    --color-condensador: rgba(255, 89, 0, 0.858);
+    --color-subenfriamiento: rgb(255, 98, 0);
+    --color-expansion: blue;
+    --color-evaporador: rgba(0, 195, 255, 0.758);
+    --color-aspiracion: rgba(159, 241, 255, 0.527);
+    --color-fondoEvaporador: rgb(146, 146, 146);
+
+}
+
+p{
+    font-size: 0.8rem;
+}
+body{
+    margin: 0px;
+    background-color: rgb(35, 35, 35);
+    position: relative;
+}
+
+header h1{
+    background: linear-gradient(to left, #00eeff, #ff0000);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    position: relative;
+    top: 7vh;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 3.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+main{
+    position: absolute;
+    height: 50rem;
+    width: 70rem;
+    background-color: rgb(255, 255, 255);
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20vh;
+}
+
+.aspiracion{
+    position: relative;
+    height: 10rem;
+    width: 0.7rem;
+    left: 71.5%;
+    top: 23%;
+    background-color: var(--color-aspiracion);
+    transform: rotate(17deg);
+}
+
+.compresor{
+    position: relative;
+    height: 7rem;
+    width: 7rem;
+    background: linear-gradient(0deg, #add8e6ce, #ffa600cb, #ff4400ce);
+    border-radius: 50%;
+    border: 3px solid black;
+    left: 70%;
+    top: 44%;
+    overflow: hidden;
+    transform: rotate(17deg);
+}
+
+.compresor .line1{
+    position: relative;
+    height: 7rem;
+    width: 0.2rem;
+    background-color: black;
+    transform: rotate(25deg);
+    left: 1.7rem;
+    bottom: 1rem;  
+}
+
+.compresor .line2{
+    position: relative;
+    height: 7rem;
+    width: 0.2rem;
+    background-color: black;
+    transform: rotate(-25deg);
+    left: 5.2rem;
+    bottom: 8rem;  
+}
+
+.descarga{
+    position: relative;
+    height: 10rem;
+    width: 0.7rem;
+    left: 78.5%;
+    top: 10.5%;
+    background-color: var(--color-descarga);
+    transform: rotate(17deg);
+
+}
+
+
+
+.descarga2{
+    position: relative;
+    height: 0.7rem;
+    width: 17.3rem;
+    left: 56.85%;
+    top: -30%;
+    background-color: var(--color-descarga2);
+    z-index: 20;
+    border-top-right-radius: 0.35rem;
+    border-bottom-left-radius: 0.35rem;
+}
+
+.condensador{
+    position: relative;
+    height: 10rem;
+    width: 14rem;
+    left: 39.6%;
+    top: -47%;
+    border: 3px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intercambiador{
+    position: relative;
+    background-image: repeating-linear-gradient( rgba(0,0,0,0.1), rgba(0,0,0,0.1) 2px, transparent 2px, transparent 4px);
+    height: 90%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.intercambiador .sombra1{
+    position: relative;
+    height: 6.3rem;
+    width: 0.7rem;
+    background-color: var(--color-condensador);
+    z-index: 10;
+    
+}
+
+.intercambiador .curvaContainer{
+    position: relative;
+    height: 1.4rem;
+    width: 2.8rem;
+    margin-left: -0.7rem;
+    margin-right: -0.7rem;
+    background-color: none;
+    align-self: flex-start;
+    overflow: hidden;
+
+}
+
+.intercambiador .curva1{
+    position: relative;
+    height: 2.8rem;
+    width: 2.8rem;
+    background-color: var(--color-condensador);
+    border-radius: 50%;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.curva1 .negativo{
+    position: relative;
+    height: 1.4rem;
+    width: 1.4rem;
+    border-radius: 50%;
+   background-color: white;
+}
+
+.intercambiador .curvaContainer2{
+    position: relative;
+    height: 1.4rem;
+    width: 2.8rem;
+    margin-left: -0.7rem;
+    margin-right: -0.7rem;
+    background-color: none;
+    align-self: flex-end;
+    overflow: hidden;
+    transform: rotate(180deg);
+
+}
+
+.sombra1:first-child {
+    background-color: var(--color-subenfriamiento);
+}
+
+.subenfriamiento{
+    position: relative;
+    height: 0.7rem;
+    width: 17.3rem;
+    left: 18.2%;
+    top: -52%;
+    background-color: var(--color-subenfriamiento);
+    z-index: 20;
+    border-bottom-right-radius: 0.35rem;
+    border-top-left-radius: 0.35rem;
+}
+
+.depositoDeLiquido{
+    position: relative;
+    height: 7rem;
+    width: 4rem;
+    border: 3px solid black;
+    left: 14%;
+    top: -57%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.depositoDeLiquido .llenado{
+height: 80%;
+    background-color: var(--color-subenfriamiento);
+    transition: height 10s ease-in-out;
+}
+
+.subenfriamiento2{
+    position: relative;
+    height: 5rem;
+    width: 0.7rem;
+    left: 16.5%;
+    top: -57%;
+    background-color: var(--color-subenfriamiento);
+}
+
+.vExpansion{
+    position: absolute;
+    height: 6rem;
+    width: 3rem;
+    top: 45%;
+    left: 15.5%;
+
+}
+
+.triangulo {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 30px 15px 0 15px;
+    border-color: #000 transparent transparent transparent;
+  }
+
+  .trianguloReg{
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 7px 0 7px;
+    border-color: #ff0000 transparent transparent transparent;
+    transform: rotate(-90deg);
+    top: 25%;
+    }
+
+  .on{
+    border-top-color: #44ff00;
+  }  
+  
+  .trianguloInv {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 30px 15px 0 15px;
+    border-color: #000 transparent transparent transparent;
+    transform: rotate(180deg);
+  }
+
+  .expansion{
+    position: absolute;
+    height: 12rem;
+    width: 0.7rem;
+    left: 16.5%;
+    top: 53%;
+    background-color: var(--color-expansion);
+  }
+
+  .evaporador{
+    position: absolute;
+    height: 10rem;
+    width: 14rem;
+    left: 33%;
+    top: 60%;
+    border: 3px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.evaporador .sombra1{
+    background-color: var(--color-evaporador);
+}
+
+.evaporador .curva1{
+    background-color: var(--color-evaporador);
+}
+
+.expansion2{
+    position: absolute;
+    height: 0.7rem;
+    width: 13.9rem;
+    left: 16.5%;
+    top: 76%;
+    background-color: var(--color-expansion);
+    z-index: 20;
+    border-bottom-right-radius: 0.35rem;
+    border-bottom-left-radius: 0.35rem;
+}
+
+.recalentamiento{
+    position: absolute;
+    height: 0.7rem;
+    width: 14.2rem;
+    left: 50.3%;
+    top: 76%;
+    background-color: var(--color-aspiracion);
+    z-index: 20;
+    border-bottom-right-radius: 0.35rem;
+    border-bottom-left-radius: 0.35rem;
+}
+
+/* input range T de la camara  */
+
+#myRange{
+    position: absolute;
+    bottom: 5%;
+    width: 20rem;
+    right: 42.5%;
+    transform: scale(60%);
+}
+
+.T{ 
+    position: absolute;
+    bottom: 7%;
+    right: 49%;
+    font-size: 0.8rem;
+}
+
+span{
+    font-size: 1.5rem;
+}
+
+/* input T de evaporacion  */
+
+#tempEvaporacion{
+    width: 3rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    padding-left: 0.5rem;
+    border: 2.5px solid black;
+  
+}
+.TempEvaporacion{
+    position: absolute;
+    bottom: 41%;
+    right: 48%;
+    font-size: 0.8rem;
+    
+}
+
+/* input range T Exterior  */
+
+.tempExterior{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    right: -3%;
+    top: 3%;
+}
+
+#myRangeExt{
+    bottom: 5%;
+    width: 20rem;
+    right: 42.5%;
+    transform: scale(60%);
+}
+
+.TExt{ 
+    bottom: 7%;
+    right: 49%;
+    font-size: 0.8rem;
+}
+
+/* input range T condensacion  */
+
+.tempCondensacion{
+   
+    position: absolute;
+    right: 43%;
+    top: 3%;
+}
+
+.hp{
+    position: absolute;
+    top: 19%;
+    left: 22%;
+}
+
+.lp{
+    position: absolute;
+    top: 70%;
+    left: 20%;
+}
+
+.gas{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+}
+
+
+.apagado{
+    opacity: 0.1;
+    transition: opacity 10s ease-in-out;
+
+}
+
+.oculto{
+    display: none;
+}
+
+.active{
+    opacity: 1;
+    
+}
+
+ /* boton de on/off  */
+
+ .toggleWrapper {
+    position: absolute;
+    top: 45%;
+    left: 1%;
+    overflow: hidden;
+    transform: scale(0.6)
+  }
+  .toggleWrapper input {
+    position: absolute;
+    left: -99em;
+  }
+  
+  .toggle {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 120px;
+    height: 50px;
+    background: #D21626;
+    border-radius: 5px;
+    transition: all 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  }
+  .toggle:before, .toggle:after {
+    position: absolute;
+    line-height: 50px;
+    font-size: 14px;
+    z-index: 2;
+    transition: all 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  }
+  .toggle:before {
+    content: "OFF";
+    left: 20px;
+    color: #D21626;
+  }
+  .toggle:after {
+    content: "ON";
+    right: 20px;
+    color: #fff;
+  }
+  
+  .toggle__handler {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    width: 65px;
+    height: 44px;
+    border-radius: 3px;
+    top: 3px;
+    left: 3px;
+    transition: all 200ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transform: translateX(0px);
+  }
+  
+  input:checked + .toggle {
+    background: var(--color-evaporador);
+  }
+  input:checked + .toggle:before {
+    color: #fff;
+  }
+  input:checked + .toggle:after {
+    color: var(--color-evaporador);
+  }
+  input:checked + .toggle .toggle__handler {
+    width: 54px;
+    transform: translateX(60px);
+    border-color: #fff;
+  }
