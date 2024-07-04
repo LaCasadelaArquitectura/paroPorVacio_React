@@ -379,7 +379,7 @@ span{
     flex-direction: column;
     align-items: center;
     position: absolute;
-    right: -3%;
+    right: 3%;
     top: 3%;
 }
 
@@ -398,23 +398,18 @@ span{
 
 /* input range T condensacion  */
 
-.tempCondensacion{
-   
-    position: absolute;
-    right: 43%;
-    top: 3%;
-}
+
 
 .hp{
     position: absolute;
-    top: 19%;
-    left: 22%;
+    top: 21%;
+    left: 2%;
 }
 
 .lp{
     position: absolute;
-    top: 70%;
-    left: 20%;
+    top: 74%;
+    left: 2%;
 }
 
 .gas{
@@ -509,3 +504,27 @@ span{
     transform: translateX(60px);
     border-color: #fff;
   }
+
+  
+.led-green {
+  position: absolute;
+  top: 47%;
+  right: 15%;
+  width: 24px;
+  height: 24px;
+  background-color: #ABFF00;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;
+}
+
+.led-red {
+  position: absolute;
+  top: 52%;
+  right: 15%;
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+  background-color: #F00;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;
+}

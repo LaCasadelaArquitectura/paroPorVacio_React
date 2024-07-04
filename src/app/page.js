@@ -12,8 +12,10 @@ import { useEffect } from "react";
 export default function Home() {
 
   const [power, setPower] = React.useState(false)
+  const [compresor, setCompresor] = React.useState(false)
   const [workTemp, setWorkTemp] = React.useState(7)
-  const [lowPressure, setLowPressure] = React.useState(2)
+  const [lowPressure, setLowPressure] = React.useState(0.40)
+  const [highPressure, setHighPressure] = React.useState(6.46)
   const [solenoidOpen, setSolenoidOpen] = React.useState(false)
 
 
@@ -28,6 +30,14 @@ export default function Home() {
     } else if (power === false || workTemp <= 3) {
       setSolenoidOpen(false)
       deactivate()
+    }
+  })
+
+  useEffect(() => {
+    if (solenoidOpen === true && lowPressure > 2.2) {
+      setCompresor(true)
+    } else if (solenoidOpen === false && lowPressure < 0.4) {
+      setCompresor(false)
     }
   })
 
@@ -48,12 +58,13 @@ export default function Home() {
     elements.forEach(element => {
       element.classList.remove('active');
     });
-    
+
     let divInterno = document.querySelector('.llenado');
     let porcentaje = 80; // change to the percentage you want at off state
     divInterno.style.height = porcentaje + '%';
   }
 
+  //work temperature set
   useEffect(() => {
     const intervalId = setInterval(() => {
       setWorkTemp(prev => {
@@ -70,6 +81,27 @@ export default function Home() {
     // Limpiar el intervalo si el efecto se vuelve a ejecutar o el componente se desmonta
     return () => clearInterval(intervalId);
   }, [solenoidOpen]);
+
+  // low pressure set
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setLowPressure(prev => {
+
+        if (!solenoidOpen && prev > 0.40) {
+          return prev - 0.2;
+        }
+        if (solenoidOpen && prev < 2.40) {
+          return prev + 0.2;
+        }
+        return prev;
+      });
+    }, 1000);
+    // Limpiar el intervalo si el efecto se vuelve a ejecutar o el componente se desmonta
+    return () => clearInterval(intervalId);
+  }, [solenoidOpen]);
+
+
 
   console.log(`power is ${power}`)
   console.log(`solenoid is ${solenoidOpen}`)
@@ -92,6 +124,9 @@ export default function Home() {
         <Evaporador />
         <Expansion open={solenoidOpen} />
 
+       {compresor ? <div class="led-green"></div> : <div class="led-red"></div>}
+        
+        
 
         <div className="recalentamiento apagado"></div>
 
@@ -99,26 +134,17 @@ export default function Home() {
           <p className="T">Temperatura de la cámara: <span >{workTemp}</span>ºC</p>
         </div>
 
-        <div className="TempEvaporacion oculto">
-          <label for="tempEvaporacion">T. evaporación: </label>
-          <input type="number" id="tempEvaporacion" min="-10" max="5" step="0.1" value="-5" oninput="calculateLowPressure()"></input>
-        </div>
-
         <div className="tempExterior">
-          <input type="range" id="myRangeExt" min="-15" max="45" step="1" value="22" oninput="showTExt(); showTCondensacion(); calculateHiPressure()" ></input>
-          <label className="TExt">Temperatura Exterior: <span id="tExt">22</span>ºC</label>
+          <label className="TExt">Temperatura Exterior: <span id="tExt">24</span>ºC</label>
         </div>
 
-        <div className="tempCondensacion">
-          <p>T. condensación: <span id="tCondensacion">37</span>ºC</p>
-        </div>
-
+  
         <div className="hp">
-          <p>HP <span id="HiPressure">9.40</span>bar</p>
+          <p>HP <span id="HiPressure">{highPressure}</span>bar</p>
         </div>
 
         <div className="lp">
-          <p>LP <span id="LowPressure">0</span>bar</p>
+          <p>LP <span id="LowPressure">{lowPressure.toFixed(2)}</span>bar</p>
         </div>
 
 
